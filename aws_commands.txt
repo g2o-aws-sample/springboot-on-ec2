@@ -1,0 +1,7 @@
+- create EC2 instance
+- connect it with terminal by access key id
+- execute below commands 
+
+sudo yum update -y
+sudo yum install docker -y
+sudo service docker start
