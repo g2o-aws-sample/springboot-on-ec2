@@ -1,0 +1,10 @@
+>Create an AWS IAM service role
+>Create a VPC to deploy the cluster
+>Create AWS EKS Cluster
+> Configure kubectl for Amazon EKS:
+	Install Kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+	Install AWS CLI: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
+>configure kubectl for AWS EKS:
+
+	aws eks --region <region> update-kubeconfig --name <clusterName>
+

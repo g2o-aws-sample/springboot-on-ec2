@@ -1,0 +1,13 @@
+to apply yaml auth file :
+
+	kubectl apply -f /aws-auth-cm.yaml
+
+launch deployment and the service yaml files created in your Kubernetes cluster :
+
+	kubectl apply -f helloworld.yaml
+	kubectl apply -f helloworld-service.yaml
+
+get the details of the running helloworld service in your cluster :
+
+	kubectl get svc service-helloworld -o yaml
+this will give hostname t  launch in browser.
