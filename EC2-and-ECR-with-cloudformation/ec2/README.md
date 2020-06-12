@@ -16,6 +16,7 @@ Steps to create EC2 Instance:
 
 2. Run below command (Modify the parameters present in {})
     
+    //TODO - Pass region as a parameter as well
     
     aws cloudformation create-stack --stack-name {STACK_NAME} --template-body file://ec2-with-security-group-cf.json --parameters ParameterKey=KeyName,ParameterValue={KEY_NAME} ParameterKey=InstanceType,ParameterValue=t2.micro
 
@@ -37,6 +38,3 @@ To delete Stack
 
     aws cloudformation delete-stack --stack-name ec2-with-security-group-cf
     
- 
- 
- 

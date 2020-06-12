@@ -16,7 +16,7 @@ Steps to create ECR :
 
 2. Run below command 
     
-    
+    //TODO - remove hardcoded principal user name, pass it as a parameters
     aws cloudformation create-stack --stack-name {STACK_NAME} --template-body file://ecr-cf.json 
 
 Example: 
