@@ -1,0 +1,2 @@
+docker build -t vijaygohil/teacher1 .
+docker run -p 8083:8083 -t vijaygohil/teacher1
