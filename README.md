@@ -239,3 +239,148 @@ REPOSITORY                                              TAG                 IMAG
 [ec2-user@ip-172-31-63-76 ~]$
 ```
 ### Docker pulled and run from ECR
+### Destroy created resources
+```
+
+chanderson@ICC12044 MINGW64 /c/Users/chanderson/learn-terraform-aws-instance
+$ terraform.exe destroy
+aws_ecr_repository.caa-test: Refreshing state... [id=caa-test]
+aws_vpc.example: Refreshing state... [id=vpc-0788ed4a3386a7ed8]
+aws_subnet.us-east-1a-public: Refreshing state... [id=subnet-03874fdfc3455c443]
+aws_instance.example: Refreshing state... [id=i-085789fa650c1e5a5]
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_ecr_repository.caa-test will be destroyed
+  - resource "aws_ecr_repository" "caa-test" {
+      - arn                  = "arn:aws:ecr:us-east-1:835696306510:repository/caa-test" -> null
+      - id                   = "caa-test" -> null
+      - image_tag_mutability = "MUTABLE" -> null
+      - name                 = "caa-test" -> null
+      - registry_id          = "835696306510" -> null
+      - repository_url       = "835696306510.dkr.ecr.us-east-1.amazonaws.com/caa-test" -> null
+      - tags                 = {} -> null
+
+      - image_scanning_configuration {
+          - scan_on_push = false -> null
+        }
+    }
+
+  # aws_instance.example will be destroyed
+  - resource "aws_instance" "example" {
+      - ami                          = "ami-b374d5a5" -> null
+      - arn                          = "arn:aws:ec2:us-east-1:835696306510:instance/i-085789fa650c1e5a5" -> null
+      - associate_public_ip_address  = true -> null
+      - availability_zone            = "us-east-1a" -> null
+      - cpu_core_count               = 1 -> null
+      - cpu_threads_per_core         = 1 -> null
+      - disable_api_termination      = false -> null
+      - ebs_optimized                = false -> null
+      - get_password_data            = false -> null
+      - hibernation                  = false -> null
+      - id                           = "i-085789fa650c1e5a5" -> null
+      - instance_state               = "running" -> null
+      - instance_type                = "t2.micro" -> null
+      - ipv6_address_count           = 0 -> null
+      - ipv6_addresses               = [] -> null
+      - monitoring                   = false -> null
+      - primary_network_interface_id = "eni-0e159883433177ca8" -> null
+      - private_dns                  = "ip-10-0-1-16.ec2.internal" -> null
+      - private_ip                   = "10.0.1.16" -> null
+      - public_dns                   = "ec2-52-90-142-14.compute-1.amazonaws.com" -> null
+      - public_ip                    = "52.90.142.14" -> null
+      - security_groups              = [] -> null
+      - source_dest_check            = true -> null
+      - subnet_id                    = "subnet-03874fdfc3455c443" -> null
+      - tags                         = {} -> null
+      - tenancy                      = "default" -> null
+      - volume_tags                  = {} -> null
+      - vpc_security_group_ids       = [
+          - "sg-0b4a992edf1695b13",
+        ] -> null
+
+      - credit_specification {
+          - cpu_credits = "standard" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_put_response_hop_limit = 1 -> null
+          - http_tokens                 = "optional" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/sda1" -> null
+          - encrypted             = false -> null
+          - iops                  = 100 -> null
+          - volume_id             = "vol-064cda49f584c36cb" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp2" -> null
+        }
+    }
+
+  # aws_subnet.us-east-1a-public will be destroyed
+  - resource "aws_subnet" "us-east-1a-public" {
+      - arn                             = "arn:aws:ec2:us-east-1:835696306510:subnet/subnet-03874fdfc3455c443" -> null
+      - assign_ipv6_address_on_creation = false -> null
+      - availability_zone               = "us-east-1a" -> null
+      - availability_zone_id            = "use1-az6" -> null
+      - cidr_block                      = "10.0.1.0/25" -> null
+      - id                              = "subnet-03874fdfc3455c443" -> null
+      - map_public_ip_on_launch         = false -> null
+      - owner_id                        = "835696306510" -> null
+      - tags                            = {} -> null
+      - vpc_id                          = "vpc-0788ed4a3386a7ed8" -> null
+    }
+
+  # aws_vpc.example will be destroyed
+  - resource "aws_vpc" "example" {
+      - arn                              = "arn:aws:ec2:us-east-1:835696306510:vpc/vpc-0788ed4a3386a7ed8" -> null
+      - assign_generated_ipv6_cidr_block = false -> null
+      - cidr_block                       = "10.0.0.0/16" -> null
+      - default_network_acl_id           = "acl-0a69356b84fb032e4" -> null
+      - default_route_table_id           = "rtb-01aa3e9d02f5955e1" -> null
+      - default_security_group_id        = "sg-0b4a992edf1695b13" -> null
+      - dhcp_options_id                  = "dopt-0d306f0316707b7a8" -> null
+      - enable_classiclink               = false -> null
+      - enable_classiclink_dns_support   = false -> null
+      - enable_dns_hostnames             = true -> null
+      - enable_dns_support               = true -> null
+      - id                               = "vpc-0788ed4a3386a7ed8" -> null
+      - instance_tenancy                 = "default" -> null
+      - main_route_table_id              = "rtb-01aa3e9d02f5955e1" -> null
+      - owner_id                         = "835696306510" -> null
+      - tags                             = {} -> null
+    }
+
+Plan: 0 to add, 0 to change, 4 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+aws_instance.example: Destroying... [id=i-085789fa650c1e5a5]
+aws_ecr_repository.caa-test: Destroying... [id=caa-test]
+aws_ecr_repository.caa-test: Destruction complete after 0s
+aws_instance.example: Still destroying... [id=i-085789fa650c1e5a5, 10s elapsed]
+aws_instance.example: Still destroying... [id=i-085789fa650c1e5a5, 20s elapsed]
+aws_instance.example: Still destroying... [id=i-085789fa650c1e5a5, 30s elapsed]
+aws_instance.example: Destruction complete after 30s
+aws_subnet.us-east-1a-public: Destroying... [id=subnet-03874fdfc3455c443]
+aws_subnet.us-east-1a-public: Destruction complete after 1s
+aws_vpc.example: Destroying... [id=vpc-0788ed4a3386a7ed8]
+aws_vpc.example: Destruction complete after 0s
+
+Destroy complete! Resources: 4 destroyed.
+
+chanderson@ICC12044 MINGW64 /c/Users/chanderson/learn-terraform-aws-instance
+$
+```
+### Resources destroyed
