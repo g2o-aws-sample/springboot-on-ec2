@@ -83,3 +83,9 @@ terraform destroy
 
 
 That's it! you installed Terraform and used it to provision an EC2 instance. 
+
+# References
+* https://adamtheautomator.com/terraform-windows/
+* https://docs.aws.amazon.com/cli/latest/userguide/install-windows.html#awscli-install-windows-path
+* https://www.terraform.io/docs/providers/aws/index.html#argument-reference
+
