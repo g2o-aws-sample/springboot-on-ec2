@@ -70,7 +70,7 @@ Default region name [None]: 'us-east-2'
 Default output format [None]: ENTER
 ```
 
-### Steps to provision
+## Steps to provision
 
 1) Download the terraform binary file 
 https://www.terraform.io/downloads.html
