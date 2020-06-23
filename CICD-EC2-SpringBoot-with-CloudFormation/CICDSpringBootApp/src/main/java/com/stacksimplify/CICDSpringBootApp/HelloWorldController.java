@@ -1,4 +1,4 @@
-package com.stacksimplify.ccdemo;
+package com.stacksimplify.CICDSpringBootApp;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

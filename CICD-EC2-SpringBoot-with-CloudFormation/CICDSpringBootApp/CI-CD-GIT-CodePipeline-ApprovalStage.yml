@@ -5,14 +5,62 @@ Parameters:
   ApplicationRepoName:
     Type: String
     Description: Name of the repo which contains Rest Application.
-    Default: ccdemo
+    Default: CICDSpringBootApp
   ArtifactStoreS3Location:
     Type: String
     Description: Name of the S3 bucket to store CodePipeline artificat.
     Default: rest-apps
   Email:
     Description: Email address where CodePipeline sends pipeline notifications
-    Type: String 
+    Type: String
+  GitHubUser:
+    Type: String
+    Description: GitHub User
+    Default: "jana247"
+  GitHubRepo:
+    Type: String
+    Description: GitHub Repo to pull from. Only the Name. not the URL
+    Default: "CICDSpringBootApp"
+  GitHubBranch:
+    Type: String
+    Description: GitHub Branch
+    Default: "master"
+  GitHubToken:
+    NoEcho: true
+    Type: String
+    Description: Secret. It might look something like 9b189a1654643522561f7b3ebd44a1531a4287af OAuthToken with access to Repo. Go to https://github.com/settings/tokens
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: "GitHub Configuration"
+        Parameters:
+          - GitHubToken
+          - GitHubUser
+          - GitHubRepo
+          - GitHubBranch
+      - Label:
+          default: "Build Configuration"
+        Parameters:
+          - BuildType
+          - BuildComputeType
+          - BuildImage
+    ParameterLabels:
+      GitHubToken:
+        default: GitHub OAuth2 Token
+      GitHubUser:
+        default: GitHub User/Org Name
+      GitHubRepo:
+        default: GitHub Repository Name
+      GitHubBranch:
+        default: GitHub Branch Name
+      BuildType:
+        default: CodeBuild type
+      BuildComputeType:
+        default: CodeBuild instance type
+      BuildImage:
+        default: CodeBuild image
 
 Resources:
 
@@ -36,11 +84,6 @@ fm  CodeBuildRole:
           PolicyDocument:
             Version: "2012-10-17"
             Statement:
-              - Effect: "Allow"
-                Action:
-                  - "codecommit:GitPull"
-                Resource:
-                  - Fn::Sub: arn:aws:codecommit:${AWS::Region}:${AWS::AccountId}:${ApplicationRepoName}
               - Effect: "Allow"
                 Action:
                   - "logs:CreateLogGroup"
@@ -74,8 +117,8 @@ fm  CodeBuildRole:
         ComputeType: BUILD_GENERAL1_SMALL
         Image: aws/codebuild/standard:2.0
       Source:
-        Location: !Sub https://git-codecommit.us-east-2.amazonaws.com/v1/repos/${ApplicationRepoName}
-        Type: CODECOMMIT
+        Location: !Ref GitHubRepo
+        Type: GITHUB
       TimeoutInMinutes: 15
       Tags:
         - Key: Name
@@ -188,16 +231,6 @@ fm  CodeBuildRole:
                 Resource: '*'
               - Effect: "Allow"
                 Action:
-                  - "codecommit:ListBranches"
-                  - "codecommit:ListRepositories"
-                  - "codecommit:BatchGetRepositories"
-                  - "codecommit:Get*"
-                  - "codecommit:GitPull"
-                  - "codecommit:UploadArchive"
-                Resource:
-                  - Fn::Sub: arn:aws:codecommit:${AWS::Region}:${AWS::AccountId}:${ApplicationRepoName}
-              - Effect: "Allow"
-                Action:
                   - "codebuild:StartBuild"
                   - "codebuild:BatchGetBuilds"
                 Resource:
@@ -223,15 +256,18 @@ fm  CodeBuildRole:
             - Name: ApplicationSource
               ActionTypeId:
                 Category: Source
-                Owner: AWS
-                Version: 1
-                Provider: CodeCommit
+                Owner: ThirdParty
+                Version: '1'
+                Provider: GitHub
               OutputArtifacts:
                 - Name: ApplicationOutput
               Configuration:
-                BranchName: master
+                Owner: !Ref GitHubUser
+                Repo: !Ref GitHubRepo
+                BranchName: !Ref GitHubBranch
+                OAuthToken: !Ref GitHubToken
                 RepositoryName:
-                  Ref: ApplicationRepoName
+                  Ref: !Ref GitHubRepo
               RunOrder: 1
         - Name: Build
           Actions:

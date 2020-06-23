@@ -1,13 +1,13 @@
-package com.stacksimplify.ccdemo;
+package com.stacksimplify.CICDSpringBootApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CcdemoApplication {
+public class CICDSpringBootApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CcdemoApplication.class, args);
+		SpringApplication.run(CICDSpringBootApplication.class, args);
 	}
 
 }

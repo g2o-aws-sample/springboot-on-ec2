@@ -112,7 +112,7 @@ Resources:
 Outputs:
   StageAppURL:
     Description: Staging Application Access URL
-    Value: !Sub 'http://${MyStageVMInstance.PublicDnsName}:8080/ccdemo/hello'          
+    Value: !Sub 'http://${MyStageVMInstance.PublicDnsName}:8080/CICDSpringBootApp/hello'
   ProdAppURL:
     Description: Prod Application Access URL
-    Value: !Sub 'http://${MyProdVMInstance.PublicDnsName}:8080/ccdemo/hello'              
+    Value: !Sub 'http://${MyProdVMInstance.PublicDnsName}:8080/CICDSpringBootApp/hello'
