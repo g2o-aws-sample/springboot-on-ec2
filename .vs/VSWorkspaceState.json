@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Setting-up-EC2-with-Terraform",
-    "\\spring-boot-containerized-to-ECR"
+    "\\multi-tier-app",
+    "\\multi-tier-app\\reactapp",
+    "\\multi-tier-app\\reactapp\\src",
+    "\\multi-tier-app\\reactapp\\src\\containers",
+    "\\multi-tier-app\\reactapp\\src\\libs"
   ],
-  "SelectedNode": "\\spring-boot-containerized-to-ECR\\README.md",
+  "SelectedNode": "\\multi-tier-app\\reactapp\\src\\App.js",
   "PreviewInSolutionExplorer": false
 }
