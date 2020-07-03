@@ -66,3 +66,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+# References
+* Create a Cognito User Pool - https://serverless-stack.com/chapters/create-a-cognito-user-pool.html
+* Create a Cognito Test User - https://serverless-stack.com/chapters/create-a-cognito-test-user.html
