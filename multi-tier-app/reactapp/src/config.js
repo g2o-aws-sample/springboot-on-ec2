@@ -1,16 +1,16 @@
 export default {
     s3: {
-        REGION: "us-east-2",
-        BUCKET: "games-g2o-app-uploads"
+        REGION: "YOUR_S3_UPLOADS_BUCKET_REGION",
+        BUCKET: "YOUR_S3_UPLOADS_BUCKET_NAME"
     },
     apiGateway: {
-        REGION: "us-east-2",
+        REGION: "YOUR_API_GATEWAY_REGION",
         URL: "YOUR_API_GATEWAY_URL"
     },
     cognito: {
-        REGION: "us-east-2",
-        USER_POOL_ID: "us-east-2_2gB7VDE94",        
-        IDENTITY_POOL_ID: "us-east-2:31780860-596c-4747-b3df-b814aed787cc",
-        APP_CLIENT_ID: "5fcd2per8hn2gvi8m9tfj75uj0"
+        REGION: "YOUR_COGNITO_REGION",
+        USER_POOL_ID: "YOUR_COGNITO_USER_POOL_ID",
+        APP_CLIENT_ID: "YOUR_COGNITO_APP_CLIENT_ID",
+        IDENTITY_POOL_ID: "YOUR_IDENTITY_POOL_ID"
     }
 };
