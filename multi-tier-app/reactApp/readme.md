@@ -80,10 +80,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
         REGION: "YOUR_S3_UPLOADS_BUCKET_REGION",
         BUCKET: "YOUR_S3_UPLOADS_BUCKET_NAME"
       },
-      apiGateway: {
-        REGION: "YOUR_API_GATEWAY_REGION",
-        URL: "YOUR_API_GATEWAY_URL"
-      },
       cognito: {
         REGION: "YOUR_COGNITO_REGION",
         USER_POOL_ID: "YOUR_COGNITO_USER_POOL_ID",
@@ -111,4 +107,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 * Terraform - AWS_Cognito_user_pools - https://www.terraform.io/docs/providers/aws/d/cognito_user_pools.html
 * Terraform - AWS_cognito_user_pool_client - https://www.terraform.io/docs/providers/aws/r/cognito_user_pool_client.html
 * Terraform - AWS_s3_bucket - https://www.terraform.io/docs/providers/aws/d/s3_bucket.html
-
