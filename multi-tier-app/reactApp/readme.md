@@ -67,6 +67,48 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
+# Config.js
+  Please create S3 Bucket, Cognito User Pool & ognito Test User using below mentioned links.
+
+  * Create an S3 Bucket - https://serverless-stack.com/chapters/create-an-s3-bucket-for-file-uploads.html
+  * Manually Create a Cognito User Pool - https://serverless-stack.com/chapters/create-a-cognito-user-pool.html
+  * Manually Create a Cognito Test User - https://serverless-stack.com/chapters/create-a-cognito-test-user.html
+
+	```
+	export default {
+      s3: {
+        REGION: "YOUR_S3_UPLOADS_BUCKET_REGION",
+        BUCKET: "YOUR_S3_UPLOADS_BUCKET_NAME"
+      },
+      apiGateway: {
+        REGION: "YOUR_API_GATEWAY_REGION",
+        URL: "YOUR_API_GATEWAY_URL"
+      },
+      cognito: {
+        REGION: "YOUR_COGNITO_REGION",
+        USER_POOL_ID: "YOUR_COGNITO_USER_POOL_ID",
+        APP_CLIENT_ID: "YOUR_COGNITO_APP_CLIENT_ID",
+        IDENTITY_POOL_ID: "YOUR_IDENTITY_POOL_ID"
+      }
+    };
+
+	```
+    Here you need to replace the following:
+    1. `YOUR_S3_UPLOADS_BUCKET_NAME` and `YOUR_S3_UPLOADS_BUCKET_REGION` with the your S3 Bucket name and region from the 
+       [Create an S3 bucket for file uploads](https://serverless-stack.com/chapters/create-an-s3-bucket-for-file-uploads.html) chapter. 
+       In our case it is `notes-app-uploads` and `us-east-2`.
+
+    2. `YOUR_API_GATEWAY_URL` and `YOUR_API_GATEWAY_REGION` with the ones from the [Deploy the APIs](https://serverless-stack.com/chapters/deploy-the-apis.html) chapter. In our case the 
+       URL is https://ly55wbovq4.execute-api.us-east-2.amazonaws.com/prod and the region is `us-east-2`.
+
+    3. `YOUR_COGNITO_USER_POOL_ID`, `YOUR_COGNITO_APP_CLIENT_ID`, and `YOUR_COGNITO_REGION` with the Cognito Pool Id, App Client id, 
+       and region from the [Create a Cognito user pool](https://serverless-stack.com/chapters/create-a-cognito-user-pool.html) chapter.
+
+    4. `YOUR_IDENTITY_POOL_ID` with your Identity pool ID from the [Create a Cognito identity pool](https://serverless-stack.com/chapters/create-a-cognito-identity-pool.html) chapter.
+
 # References
-* Create a Cognito User Pool - https://serverless-stack.com/chapters/create-a-cognito-user-pool.html
-* Create a Cognito Test User - https://serverless-stack.com/chapters/create-a-cognito-test-user.html
+
+* Terraform - AWS_Cognito_user_pools - https://www.terraform.io/docs/providers/aws/d/cognito_user_pools.html
+* Terraform - AWS_cognito_user_pool_client - https://www.terraform.io/docs/providers/aws/r/cognito_user_pool_client.html
+* Terraform - AWS_s3_bucket - https://www.terraform.io/docs/providers/aws/d/s3_bucket.html
+
