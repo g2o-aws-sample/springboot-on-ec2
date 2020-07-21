@@ -13,7 +13,7 @@ variable "aws_region" {
 # public key for ec2 instance
 resource "aws_key_pair" "react-app" {
   key_name   = "sshkey"
-  public_key = file("c:/Users/chanderson/.ssh/terraform.pub")
+  public_key = file("SSH_PUBLIC_KEY_FILE_FOR_INSTANCE")
 }
 
 # create EC2 instance with public key, public IP, security group
@@ -36,7 +36,7 @@ resource "aws_instance" "react-app" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = file("c:/Users/chanderson/.ssh/terraform")
+    private_key = file("SSH_PRIVATE_KEY_FILE_FOR_INSTANCE")
     host        = self.public_ip
     agent       = false
   }
